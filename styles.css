@@ -1,0 +1,130 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Great+Vibes&family=Poppins:wght@300&display=swap');
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Hide inputs */
+#open, #flip {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Body */
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, #5a0f0f, #1a0000);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* OPEN BUTTON */
+.open-btn {
+  position: absolute;
+  bottom: 40px;
+  padding: 12px 25px;
+  background: gold;
+  color: black;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* SCROLL WRAPPER */
+.scroll-wrapper {
+  width: 420px;
+  height: 0;
+  overflow: hidden;
+  transition: height 1s ease;
+}
+
+/* OPEN EFFECT */
+#open:checked ~ .scroll-wrapper {
+  height: 550px;
+}
+
+/* SCROLL */
+.scroll {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #fff5e6, #ffe0b3);
+  border-radius: 20px;
+  box-shadow: 0 0 40px gold;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1s ease;
+}
+
+#open:checked ~ .scroll-wrapper .scroll {
+  transform: scaleY(1);
+}
+
+/* BOOK */
+.book {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  perspective: 1500px;
+}
+
+/* PAGES */
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  backface-visibility: hidden;
+  transition: transform 1s;
+}
+
+.front {
+  z-index: 2;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+/* FLIP */
+#flip:checked ~ .scroll-wrapper .book .front {
+  transform: rotateY(-180deg);
+}
+
+#flip:checked ~ .scroll-wrapper .book .back {
+  transform: rotateY(0);
+}
+
+/* CONTENT */
+.content {
+  padding: 40px;
+  text-align: center;
+}
+
+/* TEXT STYLES */
+.title {
+  font-family: 'Cinzel', serif;
+  color: #8b0000;
+}
+
+.names {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.5rem;
+  color: #b22222;
+}
+
+/* BUTTONS */
+.next-btn, .back-btn {
+  margin-top: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  background: gold;
+  border-radius: 20px;
+  cursor: pointer;
+}
